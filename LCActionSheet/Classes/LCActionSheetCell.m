@@ -67,8 +67,12 @@
         self.titleLabel = titleLabel;
         [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.contentView).insets(self.buttonEdgeInsets);
+            make.right.equalTo(self).offset(-15);
         }];
         
+        UILabel *titleLabl = [[UILabel alloc] init];
+        titleLabl.text = "@MOI";
+            
         UIView *lineView = [[UIView alloc] init];
         lineView.backgroundColor = self.cellSeparatorColor;
         lineView.contentMode   = UIViewContentModeBottom;
