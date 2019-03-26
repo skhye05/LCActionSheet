@@ -67,7 +67,7 @@
         self.titleLabel = titleLabel;
         [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
              make.centerY.equalTo(self.contentView);
-             make.left.equalTo(150);
+             make.left.offset(150);
         }];
             
         UIView *lineView = [[UIView alloc] init];
