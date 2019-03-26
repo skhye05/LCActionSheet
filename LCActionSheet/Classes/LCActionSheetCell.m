@@ -66,8 +66,8 @@
         [self.contentView addSubview:titleLabel];
         self.titleLabel = titleLabel;
         [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.contentView).insets(self.buttonEdgeInsets);
-            make.right.equalTo(self).offset(-15);
+             make.centerY.equalTo(self);
+             make.left.equalTo(self).offset(15);
         }];
             
         UIView *lineView = [[UIView alloc] init];
