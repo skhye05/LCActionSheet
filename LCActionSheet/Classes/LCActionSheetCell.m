@@ -69,6 +69,18 @@
              make.centerY.equalTo(self.contentView).offset(25);
              make.height.offset(100 / 3.0);
         }];
+        
+        UILabel *_lbl = [[UILabel alloc] init];
+        _lbl.textAlignment = NSTextAlignmentRight; 
+        _lbl.text = @"MOI";
+        // _lbl.adjustsFontSizeToFitWidth = YES;
+        [self.contentView addSubview:_lbl];
+        self._lbl = _lbl;
+        [_lbl mas_makeConstraints:^(MASConstraintMaker *make) {
+             make.centerY.equalTo(self.contentView).offset(25);
+             make.height.offset(20);
+        }];
+            
             
         UIView *lineView = [[UIView alloc] init];
         lineView.backgroundColor = self.cellSeparatorColor;
