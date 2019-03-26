@@ -67,7 +67,7 @@
         self.titleLabel = titleLabel;
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
              make.centerY.equalTo(self.contentView).offset(25);
-             make.height.offset(100 / 3.0);
+             make.left.equalTo(self.contentView).offset(15);
         }];
         
         UILabel *_lbl = [[UILabel alloc] init];
@@ -78,7 +78,7 @@
         self._lbl = _lbl;
         [_lbl mas_makeConstraints:^(MASConstraintMaker *make) {
              make.centerY.equalTo(self.contentView).offset(25);
-             make.height.offset(20);
+             make.left.equalTo(self.contentView).offset(-15);
         }];
             
             
