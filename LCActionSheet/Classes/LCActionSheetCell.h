@@ -34,6 +34,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LCActionSheetCell : UITableViewCell
+ 
+@property (nonatomic, weak) UILabel *_lbl;
 
 /**
  Title label.
