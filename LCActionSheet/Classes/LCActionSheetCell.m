@@ -61,7 +61,7 @@
         }];
         
         UILabel *titleLabel = [[UILabel alloc] init];
-        titleLabel.textAlignment = NSTextAlignmentRight; 
+        titleLabel.textAlignment = NSTextAlignmentLeft; 
         titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.contentView addSubview:titleLabel];
         self.titleLabel = titleLabel;
