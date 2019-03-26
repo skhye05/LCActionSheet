@@ -73,7 +73,7 @@
         UILabel *_lbl = [[UILabel alloc] init];
         _lbl.textAlignment = NSTextAlignmentRight; 
         _lbl.text = @"MOI";
-        _lbl.clipsToBounds = YES;
+        // _lbl.clipsToBounds = YES;
         // _lbl.adjustsFontSizeToFitWidth = YES;
         [self.contentView addSubview:_lbl];
         self._lbl = _lbl;
