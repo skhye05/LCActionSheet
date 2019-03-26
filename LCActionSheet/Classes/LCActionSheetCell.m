@@ -65,9 +65,9 @@
         // titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.contentView addSubview:titleLabel];
         self.titleLabel = titleLabel;
-        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
              make.centerY.equalTo(self.contentView).offset(25);
-             make.left.offset(50);
+             make.height.offset(100 / 3.0);
         }];
             
         UIView *lineView = [[UIView alloc] init];
