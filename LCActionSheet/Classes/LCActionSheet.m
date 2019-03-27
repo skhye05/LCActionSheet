@@ -395,7 +395,7 @@
 
     [bottomView addSubview:mainIconView];
     [mainIconView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self);
+        make.centerY.equalTo(bottomView);
         make.bottom.equalTo(lineViewHeader.mas_bottom);
         make.width.mas_equalTo(20);
         make.height.mas_equalTo(20);
