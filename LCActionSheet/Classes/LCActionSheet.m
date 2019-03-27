@@ -37,6 +37,8 @@
 
 @property (nonatomic, strong) NSArray<NSString *> *otherButtonTitles;
 
+@property (nonatomic, strong) NSArray<NSString *> *icons;
+
 @property (nonatomic, assign) CGSize titleTextSize;
 
 @property (nonatomic, weak) UIView *bottomView;
@@ -63,7 +65,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-+ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
++ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *> *)iconArray delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
     id eachObject;
     va_list argumentList;
     NSMutableArray *tempOtherButtonTitles = nil;
@@ -75,14 +77,16 @@
         }
         va_end(argumentList);
     }
+    
     return [[self alloc] initWithTitle:title
                               mainIcon:mainIcon
+                             iconArray:iconArray
                               delegate:delegate
                      cancelButtonTitle:cancelButtonTitle
                  otherButtonTitleArray:tempOtherButtonTitles];
 }
 
-+ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon cancelButtonTitle:(NSString *)cancelButtonTitle clicked:(LCActionSheetClickedHandler)clickedHandler otherButtonTitles:(NSString *)otherButtonTitles, ... {
++ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *> *)iconArray cancelButtonTitle:(NSString *)cancelButtonTitle clicked:(LCActionSheetClickedHandler)clickedHandler otherButtonTitles:(NSString *)otherButtonTitles, ... {
     id eachObject;
     va_list argumentList;
     NSMutableArray *tempOtherButtonTitles = nil;
@@ -96,12 +100,13 @@
     }
     return [[self alloc] initWithTitle:title
                               mainIcon:mainIcon
+                             iconArray:iconArray
                      cancelButtonTitle:cancelButtonTitle
                                clicked:clickedHandler
                  otherButtonTitleArray:tempOtherButtonTitles];
 }
 
-+ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon cancelButtonTitle:(NSString *)cancelButtonTitle didDismiss:(LCActionSheetDidDismissHandler)didDismissHandler otherButtonTitles:(NSString *)otherButtonTitles, ... {
++ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *> *)iconArray cancelButtonTitle:(NSString *)cancelButtonTitle didDismiss:(LCActionSheetDidDismissHandler)didDismissHandler otherButtonTitles:(NSString *)otherButtonTitles, ... {
     id eachObject;
     va_list argumentList;
     NSMutableArray *tempOtherButtonTitles = nil;
@@ -115,39 +120,43 @@
     }
     return [[self alloc] initWithTitle:title
                               mainIcon:mainIcon
+                             iconArray:iconArray
                      cancelButtonTitle:cancelButtonTitle
                             didDismiss:didDismissHandler
                  otherButtonTitleArray:tempOtherButtonTitles];
 }
 
-+ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
++ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *> *)iconArray delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
     
     return [[self alloc] initWithTitle:title
                               mainIcon:mainIcon
+                             iconArray:iconArray
                               delegate:delegate
                      cancelButtonTitle:cancelButtonTitle
                  otherButtonTitleArray:otherButtonTitleArray];
 }
 
-+ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon cancelButtonTitle:(NSString *)cancelButtonTitle clicked:(LCActionSheetClickedHandler)clickedHandler otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
++ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *> *)iconArray cancelButtonTitle:(NSString *)cancelButtonTitle clicked:(LCActionSheetClickedHandler)clickedHandler otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
     
     return [[self alloc] initWithTitle:title
                               mainIcon:mainIcon
+                             iconArray:iconArray
                      cancelButtonTitle:cancelButtonTitle
                                clicked:clickedHandler
                  otherButtonTitleArray:otherButtonTitleArray];
 }
 
-+ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon cancelButtonTitle:(nullable NSString *)cancelButtonTitle didDismiss:(nullable LCActionSheetDidDismissHandler)didDismissHandler otherButtonTitleArray:(nullable NSArray<NSString *> *)otherButtonTitleArray {
++ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *> *)iconArray cancelButtonTitle:(nullable NSString *)cancelButtonTitle didDismiss:(nullable LCActionSheetDidDismissHandler)didDismissHandler otherButtonTitleArray:(nullable NSArray<NSString *> *)otherButtonTitleArray {
     
     return [[self alloc] initWithTitle:title
                               mainIcon:mainIcon
+                             iconArray:iconArray
                      cancelButtonTitle:cancelButtonTitle
                             didDismiss:didDismissHandler
                  otherButtonTitleArray:otherButtonTitleArray];
 }
 
-- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
+- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *> *)iconArray delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
     if (self = [super init]) {
         [self config:LCActionSheetConfig.config];
         
@@ -168,13 +177,14 @@
         self.delegate          = delegate;
         self.cancelButtonTitle = cancelButtonTitle;
         self.otherButtonTitles = tempOtherButtonTitles;
+        self.icons             = iconArray;
         
         [self setupView];
     }
     return self;
 }
 
-- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon cancelButtonTitle:(NSString *)cancelButtonTitle clicked:(LCActionSheetClickedHandler)clickedHandler otherButtonTitles:(NSString *)otherButtonTitles, ... {
+- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *> *)iconArray cancelButtonTitle:(NSString *)cancelButtonTitle clicked:(LCActionSheetClickedHandler)clickedHandler otherButtonTitles:(NSString *)otherButtonTitles, ... {
     if (self = [super init]) {
         [self config:LCActionSheetConfig.config];
         
@@ -195,13 +205,14 @@
         self.cancelButtonTitle = cancelButtonTitle;
         self.clickedHandler    = clickedHandler;
         self.otherButtonTitles = tempOtherButtonTitles;
+        self.icons             = iconArray;
         
         [self setupView];
     }
     return self;
 }
 
-- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon cancelButtonTitle:(NSString *)cancelButtonTitle didDismiss:(LCActionSheetDidDismissHandler)didDismissHandler otherButtonTitles:(NSString *)otherButtonTitles, ... {
+- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *> *)iconArray cancelButtonTitle:(NSString *)cancelButtonTitle didDismiss:(LCActionSheetDidDismissHandler)didDismissHandler otherButtonTitles:(NSString *)otherButtonTitles, ... {
     if (self = [super init]) {
         [self config:LCActionSheetConfig.config];
         
@@ -222,13 +233,14 @@
         self.cancelButtonTitle = cancelButtonTitle;
         self.didDismissHandler = didDismissHandler;
         self.otherButtonTitles = tempOtherButtonTitles;
+        self.icons             = iconArray;
         
         [self setupView];
     }
     return self;
 }
 
-- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
+- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *> *)iconArray delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
     if (self = [super init]) {
         [self config:LCActionSheetConfig.config];
         
@@ -237,13 +249,14 @@
         self.cancelButtonTitle = cancelButtonTitle;
         self.mainIcon          = mainIcon;
         self.otherButtonTitles = otherButtonTitleArray;
+        self.icons             = iconArray;
         
         [self setupView];
     }
     return self;
 }
 
-- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon cancelButtonTitle:(NSString *)cancelButtonTitle clicked:(LCActionSheetClickedHandler)clickedHandler otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
+- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *>  *)iconArray cancelButtonTitle:(NSString *)cancelButtonTitle clicked:(LCActionSheetClickedHandler)clickedHandler otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
     if (self = [super init]) {
         [self config:LCActionSheetConfig.config];
         
@@ -252,13 +265,14 @@
         self.cancelButtonTitle = cancelButtonTitle;
         self.clickedHandler    = clickedHandler;
         self.otherButtonTitles = otherButtonTitleArray;
+        self.icons             = iconArray;
         
         [self setupView];
     }
     return self;
 }
 
-- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon cancelButtonTitle:(NSString *)cancelButtonTitle didDismiss:(LCActionSheetDidDismissHandler)didDismissHandler otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
+- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon iconArray:(NSArray<NSString *> *)iconArray cancelButtonTitle:(NSString *)cancelButtonTitle didDismiss:(LCActionSheetDidDismissHandler)didDismissHandler otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
     if (self = [super init]) {
         [self config:LCActionSheetConfig.config];
         
@@ -267,6 +281,7 @@
         self.cancelButtonTitle = cancelButtonTitle;
         self.didDismissHandler = didDismissHandler;
         self.otherButtonTitles = otherButtonTitleArray;
+        self.icons             = iconArray;
         
         [self setupView];
     }
@@ -958,7 +973,7 @@
     [cell.titleLabel.layer setMasksToBounds:YES];
 
     cell.cellSeparatorColor = self.separatorColor;
-    cell.iconImage = [UIImage imageNamed:@"lock"];
+    cell.iconImage = [UIImage imageNamed:self.icons[indexPath.row]];
     
 //    cell.lineView.hidden = indexPath.row == MAX(self.otherButtonTitles.count - 1, 0);
     

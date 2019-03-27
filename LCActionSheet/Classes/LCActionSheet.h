@@ -292,7 +292,8 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
  @return An instance of LCActionSheet.
  */
 + (instancetype)sheetWithTitle:(nullable NSString *)title
-mainIcon:(nullable UIImage *)mainIcon
+                      mainIcon:(nullable UIImage *)mainIcon
+                     iconArray:(nullable NSArray<NSString *> *)iconArray
                       delegate:(nullable id<LCActionSheetDelegate>)delegate
              cancelButtonTitle:(nullable NSString *)cancelButtonTitle
              otherButtonTitles:(nullable NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
@@ -309,6 +310,7 @@ mainIcon:(nullable UIImage *)mainIcon
  */
 + (instancetype)sheetWithTitle:(nullable NSString *)title
                       mainIcon:(nullable UIImage *)mainIcon
+                     iconArray:(nullable NSArray<NSString *> *)iconArray
                       delegate:(nullable id<LCActionSheetDelegate>)delegate
              cancelButtonTitle:(nullable NSString *)cancelButtonTitle
          otherButtonTitleArray:(nullable NSArray<NSString *> *)otherButtonTitleArray;
@@ -324,7 +326,8 @@ mainIcon:(nullable UIImage *)mainIcon
  @return An instance of LCActionSheet.
  */
 - (instancetype)initWithTitle:(nullable NSString *)title
-mainIcon:(nullable UIImage *)mainIcon
+                     mainIcon:(nullable UIImage *)mainIcon
+                    iconArray:(nullable NSArray<NSString *> *)iconArray
                      delegate:(nullable id<LCActionSheetDelegate>)delegate
             cancelButtonTitle:(nullable NSString *)cancelButtonTitle
             otherButtonTitles:(nullable NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
@@ -341,6 +344,7 @@ mainIcon:(nullable UIImage *)mainIcon
  */
 - (instancetype)initWithTitle:(nullable NSString *)title
                      mainIcon:(nullable UIImage *)mainIcon
+                    iconArray:(nullable NSArray<NSString *> *)iconArray
                      delegate:(nullable id<LCActionSheetDelegate>)delegate
             cancelButtonTitle:(nullable NSString *)cancelButtonTitle
         otherButtonTitleArray:(nullable NSArray<NSString *> *)otherButtonTitleArray;
@@ -359,7 +363,8 @@ mainIcon:(nullable UIImage *)mainIcon
  @return An instance of LCActionSheet.
  */
 + (instancetype)sheetWithTitle:(nullable NSString *)title
-mainIcon:(nullable UIImage *)mainIcon
+                      mainIcon:(nullable UIImage *)mainIcon
+                     iconArray:(nullable NSArray<NSString *> *)iconArray
              cancelButtonTitle:(nullable NSString *)cancelButtonTitle
                        clicked:(nullable LCActionSheetClickedHandler)clickedHandler
              otherButtonTitles:(nullable NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
@@ -375,7 +380,8 @@ mainIcon:(nullable UIImage *)mainIcon
  @return An instance of LCActionSheet.
  */
 + (instancetype)sheetWithTitle:(nullable NSString *)title
-mainIcon:(nullable UIImage *)mainIcon
+                      mainIcon:(nullable UIImage *)mainIcon
+                     iconArray:(nullable NSArray<NSString *> *)iconArray
              cancelButtonTitle:(nullable NSString *)cancelButtonTitle
                        clicked:(nullable LCActionSheetClickedHandler)clickedHandler
          otherButtonTitleArray:(nullable NSArray<NSString *> *)otherButtonTitleArray;
@@ -391,7 +397,8 @@ mainIcon:(nullable UIImage *)mainIcon
  @return An instance of LCActionSheet.
  */
 - (instancetype)initWithTitle:(nullable NSString *)title
-mainIcon:(nullable UIImage *)mainIcon
+                     mainIcon:(nullable UIImage *)mainIcon
+                    iconArray:(nullable NSArray<NSString *> *)iconArray
             cancelButtonTitle:(nullable NSString *)cancelButtonTitle
                       clicked:(nullable LCActionSheetClickedHandler)clickedHandler
             otherButtonTitles:(nullable NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
@@ -407,7 +414,8 @@ mainIcon:(nullable UIImage *)mainIcon
  @return An instance of LCActionSheet.
  */
 - (instancetype)initWithTitle:(nullable NSString *)title
-mainIcon:(nullable UIImage *)mainIcon
+                     mainIcon:(nullable UIImage *)mainIcon
+                    iconArray:(nullable NSArray<NSString *> *)iconArray
             cancelButtonTitle:(nullable NSString *)cancelButtonTitle
                       clicked:(nullable LCActionSheetClickedHandler)clickedHandler
         otherButtonTitleArray:(nullable NSArray<NSString *> *)otherButtonTitleArray;
@@ -425,7 +433,8 @@ mainIcon:(nullable UIImage *)mainIcon
  @return An instance of LCActionSheet.
  */
 + (instancetype)sheetWithTitle:(nullable NSString *)title
-mainIcon:(nullable UIImage *)mainIcon
+                      mainIcon:(nullable UIImage *)mainIcon
+                     iconArray:(nullable NSArray<NSString *> *)iconArray
              cancelButtonTitle:(nullable NSString *)cancelButtonTitle
                     didDismiss:(nullable LCActionSheetDidDismissHandler)didDismissHandler
              otherButtonTitles:(nullable NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
@@ -441,7 +450,8 @@ mainIcon:(nullable UIImage *)mainIcon
  @return An instance of LCActionSheet.
  */
 + (instancetype)sheetWithTitle:(nullable NSString *)title
-mainIcon:(nullable UIImage *)mainIcon
+                      mainIcon:(nullable UIImage *)mainIcon
+                     iconArray:(nullable NSArray<NSString *> *)iconArray
              cancelButtonTitle:(nullable NSString *)cancelButtonTitle
                     didDismiss:(nullable LCActionSheetDidDismissHandler)didDismissHandler
          otherButtonTitleArray:(nullable NSArray<NSString *> *)otherButtonTitleArray;
@@ -457,7 +467,8 @@ mainIcon:(nullable UIImage *)mainIcon
  @return An instance of LCActionSheet.
  */
 - (instancetype)initWithTitle:(nullable NSString *)title
-mainIcon:(nullable UIImage *)mainIcon
+                     mainIcon:(nullable UIImage *)mainIcon
+                    iconArray:(nullable NSArray<NSString *> *)iconArray
             cancelButtonTitle:(nullable NSString *)cancelButtonTitle
                    didDismiss:(nullable LCActionSheetDidDismissHandler)didDismissHandler
             otherButtonTitles:(nullable NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
@@ -473,7 +484,8 @@ mainIcon:(nullable UIImage *)mainIcon
  @return An instance of LCActionSheet.
  */
 - (instancetype)initWithTitle:(nullable NSString *)title
-mainIcon:(nullable UIImage *)mainIcon
+                     mainIcon:(nullable UIImage *)mainIcon
+                    iconArray:(nullable NSArray<NSString *> *)iconArray
             cancelButtonTitle:(nullable NSString *)cancelButtonTitle
                    didDismiss:(nullable LCActionSheetDidDismissHandler)didDismissHandler
         otherButtonTitleArray:(nullable NSArray<NSString *> *)otherButtonTitleArray;

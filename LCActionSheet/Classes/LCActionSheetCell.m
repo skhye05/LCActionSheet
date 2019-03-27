@@ -76,28 +76,29 @@
         self.titleLabel = titleLabel;
         
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-             make.centerY.equalTo(self.contentView);
+            make.centerY.equalTo(self.contentView);
+            make.left.equalTo(self.contentView).offset(50);
         }];   
         
         [self.contentView addSubview:self.iconImageView];
         [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(titleLabel);
-            make.left.equalTo(self.contentView).offset(10);
-            make.width.mas_equalTo(25);
-            make.height.mas_equalTo(25);
+            make.left.equalTo(self.contentView).offset(15);
+            make.width.mas_equalTo(20);
+            make.height.mas_equalTo(20);
         }];
             
-        UIView *lineView = [[UIView alloc] init];
-        lineView.backgroundColor = self.cellSeparatorColor;
-        lineView.contentMode   = UIViewContentModeBottom;
-        lineView.hidden = true;
-        lineView.clipsToBounds = YES;
-        [self.contentView addSubview:lineView];
-        self.lineView = lineView;
-        [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.equalTo(self.contentView);
-            make.height.offset(1 / 3.0);
-        }];
+//        UIView *lineView = [[UIView alloc] init];
+//        lineView.backgroundColor = self.cellSeparatorColor;
+//        lineView.contentMode   = UIViewContentModeBottom;
+//        lineView.hidden = true;
+//        lineView.clipsToBounds = YES;
+//        [self.contentView addSubview:lineView];
+//        self.lineView = lineView;
+//        [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.right.bottom.equalTo(self.contentView);
+//            make.height.offset(1 / 3.0);
+//        }];
     }
     return self;
 }
@@ -116,7 +117,7 @@
 
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView).insets(self.buttonEdgeInsets);
-        make.left.equalTo(self.contentView).offset(45);
+        make.left.equalTo(self.contentView).offset(50);
     }];
 }
 
@@ -124,8 +125,8 @@
 - (void)setCellSeparatorColor:(UIColor *)cellSeparatorColor {
     _cellSeparatorColor = cellSeparatorColor;
     
-    self.highlightedView.backgroundColor = cellSeparatorColor;
-    self.lineView.backgroundColor = cellSeparatorColor;
+//    self.highlightedView.backgroundColor = cellSeparatorColor;
+//    self.lineView.backgroundColor = cellSeparatorColor;
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
