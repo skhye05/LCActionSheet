@@ -377,31 +377,20 @@
     }];
     self.titleLabel = titleLabel;
     
-    UIView *lineViewHeader  = [[UIView alloc] init];
-    lineViewHeader.backgroundColor = self.separatorColor;
-    lineViewHeader.contentMode   = UIViewContentModeBottom;
-    lineViewHeader.clipsToBounds = YES;
-    [bottomView addSubview:lineViewHeader];
-    [lineViewHeader mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(bottomView);
-        make.bottom.equalTo(titleLabel.mas_bottom);
-        make.height.offset(1 / 3.0);
-    }];
-    self.lineViewHeader = lineViewHeader;
-    
     UIImageView *mainIconView = [UIImageView new];
     [mainIconView setImage:self.mainIcon];
     // mainIconView.image = self.mainIcon;
-
+    
     [bottomView addSubview:mainIconView];
     [mainIconView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(bottomView);
-        make.bottom.equalTo(lineViewHeader.mas_bottom);
+        make.left.equalTo(bottomView).offset(15);
         make.width.mas_equalTo(20);
         make.height.mas_equalTo(20);
     }];
     
     self.mainIconView = mainIconView;
+
     
     UITableView *tableView    = [[UITableView alloc] init];
     tableView.backgroundColor = [UIColor clearColor];
@@ -416,7 +405,7 @@
     }];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView = tableView;
-    
+
 
     UIView *lineView  = [[UIView alloc] init];
     lineView.backgroundColor = self.separatorColor;
