@@ -355,7 +355,7 @@
     [bottomView addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(bottomView).offset(self.title.length > 0 ? self.titleEdgeInsets.top : 0);
-        make.left.equalTo(bottomView).offset(80);
+        make.left.equalTo(bottomView).offset(self.titleEdgeInsets.left);
         make.right.equalTo(bottomView).offset(-self.titleEdgeInsets.right);
         
         CGFloat height = self.title.length > 0 ? self.titleTextSize.height + 2.0f : 0;  // Prevent omit
@@ -731,7 +731,7 @@
 - (void)updateTitleLabel {
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.bottomView).offset(self.title.length > 0 ? self.titleEdgeInsets.top : 0);
-        make.left.equalTo(self.bottomView).offset(50);
+         make.left.equalTo(self.bottomView).offset(self.titleEdgeInsets.left);
         make.right.equalTo(self.bottomView).offset(-self.titleEdgeInsets.right);
         
         CGFloat height = self.title.length > 0 ? self.titleTextSize.height + 2.0f : 0;  // Prevent omit
