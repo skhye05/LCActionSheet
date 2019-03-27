@@ -29,7 +29,7 @@
 #import "Masonry.h"
 #import "LCActionSheetConfig.h"
 
-#define AAImage(fileName)   [UIImage imageNamed:[@"LCActionSheetController.bundle" stringByAppendingPathComponent:fileName]] ? : [UIImage imageNamed:[@"Frameworks/AAMultiSelectController.framework/AAMultiSelectController.bundle" stringByAppendingPathComponent:fileName]]
+#define LCImage(fileName)   [UIImage imageNamed:[@"LCActionSheetController.bundle" stringByAppendingPathComponent:fileName]] ? : [UIImage imageNamed:[@"Frameworks/AAMultiSelectController.framework/AAMultiSelectController.bundle" stringByAppendingPathComponent:fileName]]
 
 
 
@@ -74,8 +74,19 @@
         self.titleLabel = titleLabel;
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
              make.centerY.equalTo(self.contentView);
-             make.left.equalTo(self.contentView).offset(80);
-        }];     
+        }];   
+        
+        
+        UIImage *iconImage = [UIImageView new];
+        iconImage.image = AAImage(@"AAicon_check.png");
+        
+        [self.contentView addSubview:iconImage];
+        [self.iconImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.contentView);
+            make.right.equalTo(self.contentView).offset(-15);
+            make.width.mas_equalTo(20);
+            make.height.mas_equalTo(20);
+        }];
             
         UIView *lineView = [[UIView alloc] init];
         lineView.backgroundColor = self.cellSeparatorColor;
@@ -96,7 +107,7 @@
 
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView).insets(self.buttonEdgeInsets);
-        // make.left.equalTo(self.contentView).offset(80);
+        make.left.equalTo(self.contentView).offset(40);
     }];
 }
 
