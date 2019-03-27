@@ -34,8 +34,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LCActionSheetCell : UITableViewCell
- 
-@property (nonatomic, weak) UILabel *_lbl;
+
+ /**
+ Icon image.
+ */
+@property (nonatomic, strong) UIImage  *iconImage;
 
 /**
  Title label.
