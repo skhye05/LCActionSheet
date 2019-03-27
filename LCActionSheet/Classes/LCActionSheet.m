@@ -378,6 +378,8 @@
     self.titleLabel = titleLabel;
     
     UIImageView *mainIconView = [UIImageView new];
+    mainIconView.contentMode = UIViewContentModeScaleAspectFit;
+
     [mainIconView setImage:self.mainIcon];
     // mainIconView.image = self.mainIcon;
     
@@ -385,8 +387,8 @@
     [mainIconView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(titleLabel);
         make.left.equalTo(bottomView).offset(15);
-        make.width.mas_equalTo(20);
-        make.height.mas_equalTo(20);
+        make.width.mas_equalTo(25);
+        make.height.mas_equalTo(25);
     }];
     
     self.mainIconView = mainIconView;
@@ -956,6 +958,7 @@
     [cell.titleLabel.layer setMasksToBounds:YES];
 
     cell.cellSeparatorColor = self.separatorColor;
+    cell.iconImage = [UIImage imageNamed:@"lock"];
     
 //    cell.lineView.hidden = indexPath.row == MAX(self.otherButtonTitles.count - 1, 0);
     
