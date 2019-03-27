@@ -60,17 +60,7 @@
             make.edges.equalTo(self.contentView);
         }];
         
-        UILabel *titleLabel = [[UILabel alloc] init];
-        titleLabel.textAlignment = NSTextAlignmentLeft; 
-        // titleLabel.adjustsFontSizeToFitWidth = YES;
-        [self.contentView addSubview:titleLabel];
-        self.titleLabel = titleLabel;
-        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-             make.centerY.equalTo(self.contentView);
-             make.left.equalTo(self.contentView).offset(15);
-        }];
-        
-        UILabel *_lbl = [[UILabel alloc] init];
+         UILabel *_lbl = [[UILabel alloc] init];
         _lbl.textAlignment = NSTextAlignmentRight; 
         _lbl.text = @"MOI";
         // _lbl.clipsToBounds = YES;
@@ -81,6 +71,18 @@
              make.centerY.equalTo(self.contentView);
              make.left.equalTo(self.contentView).offset(-15);
         }];
+        
+        UILabel *titleLabel = [[UILabel alloc] init];
+        titleLabel.textAlignment = NSTextAlignmentLeft; 
+        // titleLabel.adjustsFontSizeToFitWidth = YES;
+        [self.contentView addSubview:titleLabel];
+        self.titleLabel = titleLabel;
+        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+             make.centerY.equalTo(self.contentView);
+             make.left.equalTo(self.contentView).offset(15);
+        }];
+        
+       
             
             
         UIView *lineView = [[UIView alloc] init];
