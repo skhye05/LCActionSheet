@@ -40,6 +40,8 @@
  */
 @property (nonatomic, weak) UIView *highlightedView;
 
+@property (nonatomic, strong) UIImageView *iconImageView;
+
 @end
 
 @implementation LCActionSheetCell
@@ -76,17 +78,10 @@
              make.centerY.equalTo(self.contentView);
         }];   
         
-        
-        UIImage *iconImage = [UIImageView new];
-        iconImage.image = LCImage(@"AAicon_check.png");
-        
-        [self.contentView addSubview:iconImage];
-    
-        self.iconImage = iconImage;
-        
-        [self.iconImage mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.contentView);
-            make.right.equalTo(self.contentView).offset(-15);
+        [self addSubview:self.iconImageView];
+        [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self);
+            make.right.equalTo(self).offset(-15);
             make.width.mas_equalTo(20);
             make.height.mas_equalTo(20);
         }];
@@ -103,6 +98,14 @@
         }];
     }
     return self;
+}
+
+- (UIImageView *)iconImageView {
+    if (!_iconImageView) {
+        _iconImageView = [UIImageView new];
+        _iconImageView.image = AAImage(@"AAicon_check.png");
+    }
+    return _iconImageView;
 }
 
 - (void)setButtonEdgeInsets:(UIEdgeInsets)buttonEdgeInsets {
@@ -130,6 +133,13 @@
     }
     
     self.highlightedView.hidden = !highlighted;
+}
+
+- (void)setIconImage:(UIImage *)iconImage {
+    if (_iconImage != iconImage) {
+        _iconImage               = iconImage;
+        self.selectedImageView.image = iconImage;
+    }
 }
 
 @end
