@@ -384,7 +384,7 @@
     [bottomView addSubview:lineViewHeader];
     [lineViewHeader mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(bottomView);
-        make.bottom.equalTo(titleLabel.mas_top);
+        make.bottom.equalTo(titleLabel.mas_bottom);
         make.height.offset(1 / 3.0);
     }];
     self.lineViewHeader = lineViewHeader;
@@ -395,9 +395,7 @@
     [bottomView addSubview:mainIconView];
     [mainIconView mas_makeConstraints:^(MASConstraintMaker *make) {
        make.left.right.equalTo(bottomView);
-        make.bottom.equalTo(lineViewHeader.mas_top);
-        make.width.mas_equalTo(20);
-        make.height.mas_equalTo(20);
+        make.bottom.equalTo(lineViewHeader.mas_bottom);
     }];
     
     self.mainIconView = mainIconView;
