@@ -78,7 +78,7 @@
         
         
         UIImage *iconImage = [UIImageView new];
-        iconImage.image = AAImage(@"AAicon_check.png");
+        iconImage.image = LCImage(@"AAicon_check.png");
         
         [self.contentView addSubview:iconImage];
         [self.iconImage mas_makeConstraints:^(MASConstraintMaker *make) {
