@@ -81,7 +81,7 @@
         [self.contentView addSubview:self.iconImageView];
         [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.contentView);
-            make.right.equalTo(self.contentView).offset(-15);
+            make.right.equalTo(self.contentView).offset(0);
             make.width.mas_equalTo(20);
             make.height.mas_equalTo(20);
         }];
