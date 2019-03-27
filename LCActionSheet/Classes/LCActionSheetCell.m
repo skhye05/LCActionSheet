@@ -103,7 +103,7 @@
 - (UIImageView *)iconImageView {
     if (!_iconImageView) {
         _iconImageView = [UIImageView new];
-        _iconImageView.image = AAImage(@"AAicon_check.png");
+        _iconImageView.image = LCImage(@"AAicon_check.png");
     }
     return _iconImageView;
 }
@@ -138,7 +138,7 @@
 - (void)setIconImage:(UIImage *)iconImage {
     if (_iconImage != iconImage) {
         _iconImage               = iconImage;
-        self.selectedImageView.image = iconImage;
+        self.iconImageView.image = iconImage;
     }
 }
 
