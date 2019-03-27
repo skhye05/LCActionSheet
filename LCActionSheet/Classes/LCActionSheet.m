@@ -383,7 +383,7 @@
     
     [bottomView addSubview:mainIconView];
     [mainIconView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(bottomView);
+        make.centerY.equalTo(titleLabel);
         make.left.equalTo(bottomView).offset(15);
         make.width.mas_equalTo(20);
         make.height.mas_equalTo(20);
