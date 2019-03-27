@@ -98,6 +98,8 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 
 #pragma mark - Properties
+ 
+ @property (nonatomic, strong) UIImage  *mainIconImage;
 
 /**
  Title.
