@@ -74,14 +74,17 @@
         // titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.contentView addSubview:titleLabel];
         self.titleLabel = titleLabel;
+        
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
              make.centerY.equalTo(self.contentView);
         }];   
         
         [self.contentView addSubview:self.iconImageView];
         [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.contentView).insets(self.buttonEdgeInsets);
-            make.centerY.equalTo(self.contentView);
+            make.centerY.equalTo(titleLabel);
+            make.left.equalTo(self.contentView).offset(10);
+            make.width.mas_equalTo(25);
+            make.height.mas_equalTo(25);
         }];
             
         UIView *lineView = [[UIView alloc] init];
@@ -102,6 +105,7 @@
 - (UIImageView *)iconImageView {
     if (!_iconImageView) {
         _iconImageView = [UIImageView new];
+        _iconImageView.contentMode = UIViewContentModeScaleAspectFit;
         _iconImageView.image = LCImage(@"AAicon_check.png");
     }
     return _iconImageView;
@@ -112,7 +116,7 @@
 
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView).insets(self.buttonEdgeInsets);
-        make.left.equalTo(self.contentView).offset(80);
+        make.left.equalTo(self.contentView).offset(45);
     }];
 }
 

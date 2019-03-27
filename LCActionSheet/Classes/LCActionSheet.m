@@ -369,7 +369,7 @@
     [bottomView addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(bottomView).offset(self.title.length > 0 ? self.titleEdgeInsets.top : 0);
-        make.left.equalTo(bottomView).offset(80);
+        make.left.equalTo(bottomView).offset(50);
         make.right.equalTo(bottomView).offset(-self.titleEdgeInsets.right);
         
         CGFloat height = self.title.length > 0 ? self.titleTextSize.height + 2.0f : 0;  // Prevent omit
@@ -386,9 +386,9 @@
     [bottomView addSubview:mainIconView];
     [mainIconView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(titleLabel);
-        make.left.equalTo(bottomView).offset(15);
-        make.width.mas_equalTo(25);
-        make.height.mas_equalTo(25);
+        make.left.equalTo(bottomView).offset(7.25);
+        make.width.mas_equalTo(30);
+        make.height.mas_equalTo(30);
     }];
     
     self.mainIconView = mainIconView;
