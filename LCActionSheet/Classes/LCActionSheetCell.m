@@ -79,7 +79,7 @@
         self.titleLabel = titleLabel;
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
              make.centerY.equalTo(self.contentView);
-             make.left.equalTo(self.contentView).offset(80);
+             // make.left.equalTo(self.contentView).offset(80);
         }];
         
        
