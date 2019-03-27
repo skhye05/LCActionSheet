@@ -29,6 +29,10 @@
 #import "Masonry.h"
 #import "LCActionSheetConfig.h"
 
+#define AAImage(fileName)   [UIImage imageNamed:[@"LCActionSheetController.bundle" stringByAppendingPathComponent:fileName]] ? : [UIImage imageNamed:[@"Frameworks/AAMultiSelectController.framework/AAMultiSelectController.bundle" stringByAppendingPathComponent:fileName]]
+
+
+
 @interface LCActionSheetCell ()
 
 /**
