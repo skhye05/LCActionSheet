@@ -46,6 +46,7 @@
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) UIView *divisionView;
 @property (nonatomic, weak) UIButton *cancelButton;
+@property (nonatomic, weak) UIImageView *mainIconView;
 
 @property (nonatomic, weak) UIView *whiteBgView;
 
@@ -115,9 +116,10 @@
                  otherButtonTitleArray:tempOtherButtonTitles];
 }
 
-+ (instancetype)sheetWithTitle:(NSString *)title delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
++ (instancetype)sheetWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
     
     return [[self alloc] initWithTitle:title
+                              mainIcon:mainIcon
                               delegate:delegate
                      cancelButtonTitle:cancelButtonTitle
                  otherButtonTitleArray:otherButtonTitleArray];
@@ -217,13 +219,14 @@
     return self;
 }
 
-- (instancetype)initWithTitle:(NSString *)title delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
+- (instancetype)initWithTitle:(NSString *)title mainIcon:(UIImage *)mainIcon delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitleArray:(NSArray<NSString *> *)otherButtonTitleArray {
     if (self = [super init]) {
         [self config:LCActionSheetConfig.config];
         
         self.title             = title;
         self.delegate          = delegate;
         self.cancelButtonTitle = cancelButtonTitle;
+        self.mainIcon          = mainIcon;
         self.otherButtonTitles = otherButtonTitleArray;
         
         [self setupView];
@@ -355,13 +358,26 @@
     [bottomView addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(bottomView).offset(self.title.length > 0 ? self.titleEdgeInsets.top : 0);
-        make.left.equalTo(bottomView).offset(self.titleEdgeInsets.left);
+        make.left.equalTo(bottomView).offset(80);
         make.right.equalTo(bottomView).offset(-self.titleEdgeInsets.right);
         
         CGFloat height = self.title.length > 0 ? self.titleTextSize.height + 2.0f : 0;  // Prevent omit
         make.height.equalTo(@(height));
     }];
     self.titleLabel = titleLabel;
+    
+    UIImageView *mainIconView = [UIImageView new];
+    mainIconView.image = self.mainIcon;
+
+    [bottomView addSubview:mainIconView];
+    [self.mainIconView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(bottomView);
+        make.right.equalTo(bottomView).offset(-15);
+        make.width.mas_equalTo(20);
+        make.height.mas_equalTo(20);
+    }];
+    
+    self.mainIconView = mainIconView;
     
     UITableView *tableView    = [[UITableView alloc] init];
     tableView.backgroundColor = [UIColor clearColor];
