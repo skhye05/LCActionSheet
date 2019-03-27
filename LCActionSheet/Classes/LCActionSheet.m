@@ -51,6 +51,7 @@
 @property (nonatomic, weak) UIView *whiteBgView;
 
 @property (nonatomic, weak) UIView *lineView;
+@property (nonatomic, weak) UIView *lineViewHeader;
 
 @property (nullable, nonatomic, strong) UIWindow *window;
 
@@ -376,13 +377,25 @@
     }];
     self.titleLabel = titleLabel;
     
+    UIView *lineViewHeader  = [[UIView alloc] init];
+    lineViewHeader.backgroundColor = self.separatorColor;
+    lineViewHeader.contentMode   = UIViewContentModeBottom;
+    lineViewHeader.clipsToBounds = YES;
+    [bottomView addSubview:lineViewHeader];
+    [lineViewHeader mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(bottomView);
+        make.bottom.equalTo(titleLabel.mas_top);
+        make.height.offset(1 / 3.0);
+    }];
+    self.lineViewHeader = lineViewHeader;
+    
     UIImageView *mainIconView = [UIImageView new];
     mainIconView.image = self.mainIcon;
 
     [bottomView addSubview:mainIconView];
-    [self.mainIconView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(bottomView);
-        make.right.equalTo(bottomView).offset(-15);
+    [mainIconView mas_makeConstraints:^(MASConstraintMaker *make) {
+       make.left.right.equalTo(bottomView);
+        make.bottom.equalTo(lineViewHeader.mas_top);
         make.width.mas_equalTo(20);
         make.height.mas_equalTo(20);
     }];
