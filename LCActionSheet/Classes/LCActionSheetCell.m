@@ -83,6 +83,8 @@
             make.edges.equalTo(self.contentView).insets(self.buttonEdgeInsets);
             make.centerY.equalTo(self.contentView);
         }];
+        
+          NSLog(@"I Was Tetsing first: %p");
             
         UIView *lineView = [[UIView alloc] init];
         lineView.backgroundColor = self.cellSeparatorColor;
@@ -102,6 +104,8 @@
     if (!_iconImageView) {
         _iconImageView = [UIImageView new];
         _iconImageView.image = LCImage(@"AAicon_check.png");
+        
+        NSLog(@"I Was Tetsing: %p");
     }
     return _iconImageView;
 }
