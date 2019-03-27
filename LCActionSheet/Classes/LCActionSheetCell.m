@@ -80,10 +80,8 @@
         
         [self.contentView addSubview:self.iconImageView];
         [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.contentView).insets(self.buttonEdgeInsets);
             make.centerY.equalTo(self.contentView);
-            make.right.equalTo(self.contentView).offset(0);
-            make.width.mas_equalTo(20);
-            make.height.mas_equalTo(20);
         }];
             
         UIView *lineView = [[UIView alloc] init];
