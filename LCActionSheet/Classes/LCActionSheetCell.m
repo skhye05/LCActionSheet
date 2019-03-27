@@ -29,7 +29,7 @@
 #import "Masonry.h"
 #import "LCActionSheetConfig.h"
 
-#define LCImage(fileName)   [UIImage imageNamed:[@"LCActionSheetController.bundle" stringByAppendingPathComponent:fileName]] ? : [UIImage imageNamed:[@"Frameworks/AAMultiSelectController.framework/AAMultiSelectController.bundle" stringByAppendingPathComponent:fileName]]
+#define LCImage(fileName)   [UIImage imageNamed:[@"LCActionSheet.bundle" stringByAppendingPathComponent:fileName]] ? : [UIImage imageNamed:[@"Frameworks/LCActionSheet.framework/LCActionSheet.bundle" stringByAppendingPathComponent:fileName]]
 
 
 
@@ -81,6 +81,9 @@
         iconImage.image = LCImage(@"AAicon_check.png");
         
         [self.contentView addSubview:iconImage];
+    
+        self.iconImage = iconImage;
+        
         [self.iconImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.contentView);
             make.right.equalTo(self.contentView).offset(-15);
