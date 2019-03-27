@@ -59,18 +59,9 @@
         [highlightedView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.contentView);
         }];
+       
         
-         UILabel *_lbl = [[UILabel alloc] init];
-        _lbl.textAlignment = NSTextAlignmentRight; 
-        _lbl.text = @"MOI";
-        // _lbl.clipsToBounds = YES;
-        // _lbl.adjustsFontSizeToFitWidth = YES;
-        [self.contentView addSubview:_lbl];
-        self._lbl = _lbl;
-        [_lbl mas_makeConstraints:^(MASConstraintMaker *make) {
-             make.centerY.equalTo(self.contentView);
-             make.left.equalTo(self.contentView).offset(-15);
-        }];
+        // make.edges.equalTo(self.contentView).insets(self.buttonEdgeInsets);
         
         UILabel *titleLabel = [[UILabel alloc] init];
         titleLabel.textAlignment = NSTextAlignmentLeft; 
@@ -79,11 +70,8 @@
         self.titleLabel = titleLabel;
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
              make.centerY.equalTo(self.contentView);
-             // make.left.equalTo(self.contentView).offset(80);
-        }];
-        
-       
-            
+             make.left.equalTo(self.contentView).offset(80);
+        }];     
             
         UIView *lineView = [[UIView alloc] init];
         lineView.backgroundColor = self.cellSeparatorColor;
@@ -104,7 +92,7 @@
 
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView).insets(self.buttonEdgeInsets);
-        make.left.equalTo(self.contentView).offset(80);
+        // make.left.equalTo(self.contentView).offset(80);
     }];
 }
 
