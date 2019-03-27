@@ -390,12 +390,15 @@
     self.lineViewHeader = lineViewHeader;
     
     UIImageView *mainIconView = [UIImageView new];
-    mainIconView.image = self.mainIcon;
+    [mainIconView setImage:self.mainIcon];
+    // mainIconView.image = self.mainIcon;
 
     [bottomView addSubview:mainIconView];
     [mainIconView mas_makeConstraints:^(MASConstraintMaker *make) {
        make.left.right.equalTo(bottomView);
         make.bottom.equalTo(lineViewHeader.mas_bottom);
+        make.width.mas_equalTo(20);
+        make.height.mas_equalTo(20);
     }];
     
     self.mainIconView = mainIconView;
@@ -407,7 +410,7 @@
     [bottomView addSubview:tableView];
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(bottomView);
-        make.top.equalTo(titleLabel.mas_bottom).offset(self.title.length > 0 ? self.titleEdgeInsets.bottom : 0);
+        make.top.equalTo(mainIconView.mas_bottom).offset(self.title.length > 0 ? self.titleEdgeInsets.bottom : 0);
         CGFloat height = self.otherButtonTitles.count * self.buttonHeight;
         make.height.equalTo(@(height));
     }];
