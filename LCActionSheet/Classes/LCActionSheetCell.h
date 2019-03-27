@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
  /**
  Icon image.
  */
-@property (nonatomic, strong) UIImage  *iconImage;
+@property (nonatomic, weak) UIImage  *iconImage;
 
 /**
  Title label.
