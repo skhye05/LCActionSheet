@@ -113,7 +113,7 @@
 
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView).insets(self.buttonEdgeInsets);
-        make.left.equalTo(self.contentView).offset(40);
+        make.left.equalTo(self.contentView).offset(80);
     }];
 }
 
