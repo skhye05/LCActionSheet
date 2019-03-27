@@ -307,6 +307,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
  @return An instance of LCActionSheet.
  */
 + (instancetype)sheetWithTitle:(nullable NSString *)title
+                      mainIcon:(nullable UIImage *)mainIcon
                       delegate:(nullable id<LCActionSheetDelegate>)delegate
              cancelButtonTitle:(nullable NSString *)cancelButtonTitle
          otherButtonTitleArray:(nullable NSArray<NSString *> *)otherButtonTitleArray;
@@ -337,6 +338,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
  @return An instance of LCActionSheet.
  */
 - (instancetype)initWithTitle:(nullable NSString *)title
+                     mainIcon:(nullable UIImage *)mainIcon
                      delegate:(nullable id<LCActionSheetDelegate>)delegate
             cancelButtonTitle:(nullable NSString *)cancelButtonTitle
         otherButtonTitleArray:(nullable NSArray<NSString *> *)otherButtonTitleArray;
